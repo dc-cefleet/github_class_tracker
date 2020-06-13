@@ -23,11 +23,11 @@ const Cohort = ({cohortName, cohortId, access_token})=>{
 			if (a.github.toLowerCase() > b.github.toLowerCase()) return 1;
 			return 0;
 		})
-        .map((user, i) => <User user={user} key={i} access_token={access_token}/>);
+        .map(user => <User user={user} key={user.github} access_token={access_token}/>);
     
         return (
             <div>
-                <AddUser onSave={onUserAdded}/>
+                <AddUser onSave={onUserAdded} cohortId={cohortId} />
                 <ul>{list}</ul>
             </div>
         )

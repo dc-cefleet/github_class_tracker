@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Repo from "./Repo";
+import {proxy} from "../config";
 
 const User = ({user,access_token})=> {
 	
@@ -8,14 +9,20 @@ const User = ({user,access_token})=> {
 	const [showRepos, setShowRepos] = useState(false)
 
 	useEffect(()=>{
-		fetch(`https://cors-anywhere.herokuapp.com/https://api.github.com/users/${user.github}`,{
-			"Authorization":`token ${access_token}`
+		fetch(`${proxy}https://api.github.com/users/${user.github}`,{
+			headers:{
+				"Authorization":`token ${access_token}`,
+				"Access-Control-Allow-Origin": "*"
+			}
 		})
 			.then(res => res.json())
 			.then(u => setGithubUser(u));
 	
-		fetch(`https://cors-anywhere.herokuapp.com/https://api.github.com/users/${user.github}/repos`,{
-			"Authorization":`token ${access_token}`
+		fetch(`${proxy}https://api.github.com/users/${user.github}/repos`,{
+			headers:{
+				"Authorization":`token ${access_token}`,
+				"Access-Control-Allow-Origin": "*"
+			}
 		})
 			.then(res => res.json())
 			.then(rep => setRepos(rep))

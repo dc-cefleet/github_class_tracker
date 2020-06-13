@@ -1,17 +1,19 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import Cohort from "./Cohort";
 
 import DC from '../assets/digitalcrafts-logo.png';
 import CohortSelector from './CohortSelector';
-import {client_id, client_secret} from "../config";
+import {client_id, client_secret, proxy} from "../config";
 
 const App = () => {
 	const [cohort,setCohort] = useState(null)
+	const [access_token,setAccess_token] = useState(window.localStorage.getItem("access_token"))
+
 	const query = new URLSearchParams(window.location.search);
 	let code = query.get("code")
-	const [access_token,setAccess_token] = useState(false)
+	
 	if(!access_token){
-		if(!code && !access_token){
+		if(!code){
 			return(
 				<div>
 					<h2>Login</h2>
@@ -22,7 +24,7 @@ const App = () => {
 		}
 
 		if(code && !access_token){
-			fetch(`https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token`,{
+			fetch(`${proxy}https://github.com/login/oauth/access_token`,{
 				method:"POST",
 				mode:"cors",
 				headers: {
@@ -36,7 +38,15 @@ const App = () => {
 				})
 			})
 			.then(res=>res.json())
-			.then(json=>{setAccess_token(json.access_token)})
+			.then(json=>{
+				setAccess_token(json.access_token)
+				if(!json.access_token || json.access_token === 'undefined'){
+					window.localStorage.removeItem("access_token")
+				} else {
+					window.localStorage.setItem("access_token", json.access_token)
+				}
+				window.location = window.location.replace(`code=${code}`)
+			})
 			return (<div>Logging In ...</div>)
 		}
 	}

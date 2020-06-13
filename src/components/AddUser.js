@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
 
-const AddUser = ({onSave})=>{
+const AddUser = ({onSave, cohortId})=>{
     
     const [github,setGithub] = useState("")
     const [realName,setRealName] = useState("")
 
     const addUser = ()=>{
-        let cohort = JSON.parse(window.localStorage.getItem("current")) || []
+        let cohort = JSON.parse(window.localStorage.getItem(cohortId)) || []
         cohort.push({realName:realName,github:github})
         let jCohort = JSON.stringify(cohort)
-        window.localStorage.setItem("current", jCohort)
+        window.localStorage.setItem(cohortId, jCohort)
         setGithub("")
         setRealName("")
         onSave(cohort)
