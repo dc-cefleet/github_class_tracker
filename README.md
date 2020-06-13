@@ -1,5 +1,9 @@
 # DC Cohort Tracker
 
+View online version here:
+
+http://dc-cohort-tracker.s3-website-us-east-1.amazonaws.com/
+
 A cohort student github progress tracker based off of Veronica Lino's concept:
 https://github.com/vlino2015/github_class_tracker
 
