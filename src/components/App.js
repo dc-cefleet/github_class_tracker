@@ -45,7 +45,7 @@ const App = () => {
 				} else {
 					window.localStorage.setItem("access_token", json.access_token)
 				}
-				window.location = window.location.replace(`code=${code}`)
+				window.location = window.location.replace(`code=${code}`,"")
 			})
 			return (<div>Logging In ...</div>)
 		}
