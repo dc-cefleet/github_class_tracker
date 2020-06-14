@@ -54,11 +54,11 @@ const App = () => {
 	if(access_token){
 		return (
 			<div className="App">
-				<img src={DC} alt="DigitalCrafts logo" style={{ width: '8rem' }} />
+				<img src={DC} alt="DigitalCrafts logo" className="dc-logo" />
 				<CohortSelector cohortSelected={setCohort} />
 				{cohort &&
 				<div>
-					<h1 style={{ textAlign: 'center' }}>
+					<h1>
 						Cohort - {cohort.name}
 					</h1>
 					<Cohort cohortId={cohort.id} cohortName={cohort.name} access_token={access_token}/>

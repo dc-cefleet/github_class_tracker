@@ -3,18 +3,18 @@ import User from "./User";
 import AddUser from "./AddUser";
 
 const Cohort = ({cohortName, cohortId, access_token})=>{
-    const [cohort, setCorhort] = useState([])
+    const [cohort, setCohort] = useState([])
 
     useEffect(()=>{
         let c = JSON.parse(window.localStorage.getItem(cohortId));
         if(!c) {
             c = []
         }
-        setCorhort(c)
+        setCohort(c)
     },[cohortName])
     
     const onUserAdded = (updated) =>{
-        setCorhort(updated)
+        setCohort(updated)
     }
 
 	const list = cohort

@@ -16,16 +16,10 @@ const AddUser = ({onSave, cohortId})=>{
     }
 
     return(
-        <div>
-            <label>
-                Add User to Cohort
-            </label>
-                <div style={{margin:"6px"}}>
-                    <input style={{padding:"6px"}} placeholder="Github Username" onChange={e=>setGithub(e.target.value)} value={github} />
-                </div>
-                <div style={{margin:"6px"}}>
-                    <input style={{padding:"6px"}} placeholder="Real Name" onChange={e=>setRealName(e.target.value)} value={realName} />
-                </div>
+        <div className="controller">
+            <label>Add User to Cohort</label>
+            <input placeholder="Github Username" onChange={e=>setGithub(e.target.value)} value={github} />
+            <input placeholder="Real Name" onChange={e=>setRealName(e.target.value)} value={realName} />
             <button onClick={addUser}>Add User</button>
         </div>
     )

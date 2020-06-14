@@ -4,6 +4,10 @@ body {
 	font-family: sans-serif;
 }
 
+h1 {
+	text-align: center;
+}
+
 .User {
 	display: flex;
 	align-items: flex-start;
@@ -32,4 +36,32 @@ body {
 img {
 	width: 100%;
 	margin: 0 1rem;
+}
+
+.dc-logo {
+	width:8rem;
+}
+
+.bio {
+	border-radius: 4px;
+	padding:6px;
+	background: #efefef;
+}
+
+.controller {
+	padding:6px;
+}
+
+.controller label {
+	display: block;
+}
+
+.controller select, .controller input {
+	padding:6px;
+	margin:6px;
+	display: block;
+}
+
+.controller button {
+	display:block;
 }

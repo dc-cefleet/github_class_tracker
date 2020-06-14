@@ -22,21 +22,20 @@ const CohortSelector = ({cohortSelected})=>{
 
     if(isCreating)
         return (
-            <div>
-                <label></label>
+            <div className='controller'>
                 <input placeholder="Enter Cohort Name" onChange={evt=>setNewName(evt.target.value)} />
                 <button onClick={saveCohort}>Save New Cohort</button>
             </div>
         )
 
     return (
-        <div style={{padding:"6px"}}>
-            <label style={{display:"block"}}>Select Cohort</label>
-            <select style={{padding:"6px"}} onChange={(evt)=>cohortSelected(cohorts[evt.target.value])} value={"select"}>
+        <div className='controller'>
+            <label>Select Cohort</label>
+            <select onChange={(evt)=>cohortSelected(cohorts[evt.target.value])} value={"select"}>
                 <option value="select">---Choose a cohort---</option>
                 {cohorts.map((c,idx)=><option key={idx} value={idx}>{c.name}</option>)}
             </select>
-            <button  style={{display:"block"}} onClick={e=>setIsCreating(true)}>Creat New Cohort</button>
+            <button onClick={e=>setIsCreating(true)}>Create New Cohort</button>
         </div>
     )
 }

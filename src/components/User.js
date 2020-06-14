@@ -47,20 +47,14 @@ const User = ({user,access_token})=> {
 						alt={`${user.realName}'s Github chart`}
 					/>
 					<h4>Bio</h4>
-					<p style={{borderRadius:"4px", padding:'6px', background:"#efefef"}}>{githubUser.bio}</p>
+					<p className="bio">{githubUser.bio}</p>
 					<h4>Repos</h4>
-					
-						{!showRepos &&
-							<button onClick={()=>setShowRepos(true)}>Show Repos</button>
-						}
-						{showRepos &&
-							<React.Fragment>
-							<button onClick={()=>setShowRepos(false)}>Hide Repos</button>
-							<ul>
-								{repos.map((repo,idx)=><Repo key={idx} repo={repo}/>)}
-							</ul>
-							</React.Fragment>
-						}
+					<button onClick={()=>setShowRepos(showRepos ? false : true)}>{showRepos ? 'Hide':"Show"} Repos</button>
+					{showRepos &&
+						<ul className="repos">
+							{repos.map((repo,idx)=><Repo key={idx} repo={repo}/>)}
+						</ul>
+					}
 				</div>
 			</div>
 		</div>
